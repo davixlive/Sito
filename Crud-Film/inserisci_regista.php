@@ -11,12 +11,12 @@
 <form action="inserisci_regista.php" method="post">
     <div class="mb-3">
         <label for="Nome" class="form-label">Nome Regista</label>
-        <input type="text" class="form-control" id="Nome" aria-describedby="Nome" placeholder="Nome">
+        <input type="text" class="form-control" id="Nome" aria-describedby="Nome" placeholder="Nome" name="Nome">
 
     </div>
     <div class="mb-3">
         <label for="Cognome" class="form-label">Cognome Regista</label>
-        <input type="text" class="form-control" id="Cognome" placeholder="Cognome">
+        <input type="text" class="form-control" id="Cognome" placeholder="Cognome" name="Cognome">
     </div>
     <button type="submit" class="btn btn-success">Invia</button>
 </form>
@@ -25,7 +25,7 @@
 </html>
 <?
 	include "connessione.php";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["Nome"])) {
         $Nome = $_POST['Nome'];
         $Cognome = $_POST['Cognome'];
         $query = "INSERT INTO `Registi`(`IDRegista`, `Nome`, `Cognome`) VALUES (NULL, '$Nome', '$Cognome')";

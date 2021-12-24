@@ -30,16 +30,11 @@ if(!$risultati=$connessione->query($la_query)) {
 
                 var answer = window.confirm("Eliminare il regista con id ["+IDRegista+"]?");
                 if (answer) {
-
-                    <?
-
-
-                    ?>
-
-                    var continuare = window.confirm("Vuoi procedere?");
+                    window.location.href = "http://cardillodavide.altervista.org/Crud-Film/cancella_regista.php/?IDRegista=" + IDRegista;
+                    /*var continuare = window.confirm("Vuoi procedere?");
                     if (continuare) {
                         window.location.href = "http://cardillodavide.altervista.org/Crud-Film/cancella_regista.php/?IDRegista=" + IDRegista;
-                    }
+                    }*/
                 }
             }
             function elenca(IDRegista){
