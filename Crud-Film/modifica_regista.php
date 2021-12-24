@@ -48,13 +48,17 @@
         }
 
 
-        echo("<form method='post' action='http://cardillodavide.altervista.org/Crud-Film/modifica_regista.php'>");
+        echo("<form action='modifica_regista.php' method='post' >");
         echo("<input style='display:none;' type='text' id='IDRegista' name='IDRegista' value='".$ID."'>");
-        echo("Nome regista");
-        echo("<input type='text' id='Nome' name='Nome' value='".$NomeRegista."' required ><br><br>");
-        echo("Cognome");
-        echo("<input type='text' id='Cognome' name='Cognome' value='".$CognomeRegista."' required><br><br>");
-        echo("<input type='reset' value='Cancella'>  <input  type='submit' value='Invia'>");
+        echo '<div class="mb-3">';
+        echo '<label for="Nome" class="form-label" ">Nome del regista</label>';
+        echo '<input type="text" class="form-control" id="Nome" value='.$NomeRegista.' name = "Nome">';
+        echo '';
+        echo '</div>';
+        echo '<div class="mb-3">';
+        echo '<label for="Cognome" class="form-label" ">Cognome del regista</label>';
+        echo '<input type="text" class="form-control" id="Cognome" value='.$CognomeRegista.' name = "Cognome">';
+        echo '<button type="submit" class="btn btn-success">Invia</button>';
         echo("</form>");
 
     }

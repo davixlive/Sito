@@ -10,7 +10,7 @@ if(!$risultati=$connessione->query($la_query)) {
     echo("Errore nell'esecuzione della query: ".$connessione->error.".");
     exit();
 } else {
-    echo("Dalla tabella ho estratto ".$risultati->num_rows." record<br/>");
+    //echo("Dalla tabella ho estratto ".$risultati->num_rows." record<br/>");
     if($risultati->num_rows>0)
     {
         ?>
@@ -20,17 +20,27 @@ if(!$risultati=$connessione->query($la_query)) {
             <meta charset="utf-8">
             <title>Visualizza Registi</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
         </head>
         <body>
+
         <script>
             function elimina(IDRegista) {
 
                 var answer = window.confirm("Eliminare il regista con id ["+IDRegista+"]?");
                 if (answer) {
-                    window.location.href = "http://cardillodavide.altervista.org/Crud-Film/cancella_regista.php/?IDRegista="+IDRegista;
-                }
 
+                    <?
+
+
+                    ?>
+
+                    var continuare = window.confirm("Vuoi procedere?");
+                    if (continuare) {
+                        window.location.href = "http://cardillodavide.altervista.org/Crud-Film/cancella_regista.php/?IDRegista=" + IDRegista;
+                    }
+                }
             }
             function elenca(IDRegista){
                 window.location.href = "http://cardillodavide.altervista.org/Crud-Film/elenca_film.php/?IDRegista="+IDRegista;
@@ -42,21 +52,22 @@ if(!$risultati=$connessione->query($la_query)) {
                 window.location.href = "http://cardillodavide.altervista.org/Crud-Film/modifica_regista.php/?IDRegista="+IDRegista;
             }
         </script>
-        <div class="container-lg">
-            <br><br><br>
-            <h1 class="display-1">ELENCO REGISTI</h1>
-            <button type='button' class='btn btn-successful'onclick='inserisci()'>Inserisci regista</button>
+
+        <div class="container-large">
+            <div class="page-header">
+                <p class="display-1" >ELENCO REGISTI</p>
+            </div>
             <div class="table-responsive">
 
-            <table class="table table-info">
+            <table class="table table-striped">
+
                 <thead>
+                <button type='button' class="btn btn-success" onclick='inserisci()'><span class="bi bi-plus-square"></span> INSERISCI</button>
                 <tr>
                     <th scope="col" class="text-center">ID Regista</th>
                     <th scope="col" class="text-center">Nome</th>
-                    <th  scope="col"class="text-center">Cognome</th>
-                    <th scope="col" class="text-center">Elimina</th>
-                    <th scope="col" class="text-center">Elenca film</th>
-                    <th scope="col" class="text-center">Modifica</th>
+                    <th scope="col"class="text-center">Cognome</th>
+                    <th scope="col" class="text-center">Azioni</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,12 +76,12 @@ if(!$risultati=$connessione->query($la_query)) {
             while($recordset = $risultati->fetch_array(MYSQLI_ASSOC))
             {
                 echo"<tr>";
-                echo "<td class='text-center'>".$recordset["IDRegista"]."</td>";
+                echo "<th scope='row' class='text-center'>".$recordset["IDRegista"]."</th>";
                 echo "<td class='text-center'>".$recordset["Nome"]."</td>";
                 echo "<td class='text-center'>".$recordset["Cognome"]."</td>";
-                echo "<td class='text-center'><button type='button' class='btn btn-danger' data-toggle='modal' onclick='elimina(".$recordset["IDRegista"].")'>elimina</button></td>";
-                echo "<td class='text-center'><button type='button' class='btn btn-primary'onclick='elenca(".$recordset["IDRegista"].")'>elenca film</button></td>";
-                echo "<td class='text-center'><button type='button' class='btn btn-primary'onclick='modifica(".$recordset["IDRegista"].")'>Modifica regista</button></td>";
+                echo "<div class='d-grid gap-2'>";
+                echo "<td class='text-center'><button type='button' class='btn btn-danger'  data-toggle='modal' onclick='elimina(".$recordset["IDRegista"].")'><span class='bi bi-trash'></span></button> <button type='button' class='btn btn-info'onclick='elenca(".$recordset["IDRegista"].")'><span class='bi bi-card-list'></span></button> <button type='button' class='btn btn-primary'onclick='modifica(".$recordset["IDRegista"].")'><span class='bi bi-pencil-square'></span></button></td> ";
+                echo"</div>";
                 echo"</tr>";
             }
             $risultati->close();
@@ -78,7 +89,11 @@ if(!$risultati=$connessione->query($la_query)) {
     }
     $connessione->close();
     ?>
+
+                </tbody>
+            </table>
             </div>
+
         </div>
         </body>
 </html>

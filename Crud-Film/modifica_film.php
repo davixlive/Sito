@@ -22,7 +22,7 @@ if(isset($_POST["Titolo"]))
     if ($connessione->query($query))
     {
         echo "<p>Dati aggiornati correttamente!</p><br/>";
-        header('Location: http://cardillodavide.altervista.org/Crud-Film/elenca_registi.php');
+        header("Location: http://cardillodavide.altervista.org/Crud-Film/elenca_film.php/?IDRegista=$IDRegista");
     }
     else
         echo ("<p>Errore: ".$query."<br/>".$connessione->error."</p>");
@@ -49,17 +49,20 @@ if(isset($_POST["Titolo"]))
         }
     }
 
-
-    echo("<form method='post' action='http://cardillodavide.altervista.org/Crud-Film/modifica_film.php'>");
-    echo("<input style='display:none;' type='text' id='IDFilm' name='IDFilm' value='".$ID."'>");
-    echo("<input style='display:none;' type='text' id='IDRegista' name='IDRegista' value='".$IDRegista."'>");
-    echo("Titolo film");
-    echo("<input type='text' id='Titolo' name='Titolo' value='".$Titolo."' required ><br><br>");
-    echo("Data uscita film");
-    echo("<input type='text' id='Data-Uscita' name='Data-Uscita' value='".$DataUscita."' required><br><br>");
-    echo("<input type='reset' value='Cancella'>  <input  type='submit' value='Invia'>");
-    echo("</form>");
-
+        echo "<form action='modifica_film.php/' method='post'>";
+        echo("<input style='display:none;' type='text' id='IDFilm' name='IDFilm' value='".$ID."'>");
+        echo("<input style='display:none;' type='text' id='IDRegista' name='IDRegista' value='".$IDRegista."'>");
+        echo '<div class="mb-3">';
+        echo '<label for="Titolo" class="form-label" ">Titolo del film</label>';
+        echo '<input type="text" class="form-control" id="Titolo" value='.$Titolo.' name = "Titolo">';
+        echo '';
+        echo '</div>';
+        echo '<div class="mb-3">';
+        echo '<label for="Data-Uscita" class="form-label" >Data di uscita del film</label>';
+        echo '<input type="date" class="form-control" id="Data-Uscita" name = "Data-Uscita" value='.$DataUscita.'>';
+        echo '</div>';
+        echo '<button type="submit" class="btn btn-success">Invia</button>';
+        echo '</form>';
 }
 
 

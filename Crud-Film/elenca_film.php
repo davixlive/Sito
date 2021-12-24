@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Visualizza</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function inserisci(IDRegista){
@@ -27,12 +28,7 @@
 <?
 include "connessione.php";
 $IDRegista = $_GET['IDRegista'];
-$la_query="SELECT * FROM `Film` WHERE `IDRegista` = $IDRegista";
-/*	if(isset($_GET["ordinata"]))
-		$la_query.=" ORDER BY RAG_SOCIALE";
-
-	//	Al termine della query aggiungo il ;
-	*/
+$la_query="SELECT * FROM `Film` WHERE `IDRegista` = $IDRegista ORDER BY `IDFilm` ASC";
 $la_query.=";";
 
 //echo("La mia query [".$la_query."]<br/>");
@@ -41,49 +37,48 @@ if(!$risultati=$connessione->query($la_query)) {
     echo("Errore nell'esecuzione della query: ".$connessione->error.".");
     exit();
 } else {
-echo("Dalla tabella ho estratto ".$risultati->num_rows." record<br/>");
+//echo("Dalla tabella ho estratto ".$risultati->num_rows." record<br/>");
 ?>
 
 
-<div class="container">
+<div class="container-large">
     <br><br><br>
     <h1 class="display-1">ELENCO FILM</h1>
-    <?
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <?
 
-        echo "<button type='button' class='btn btn-successful' data-toggle='modal' onclick='inserisci(".$IDRegista.")'>Inserisci film</button>";
+            echo "<button type='button' class='btn btn-success' data-toggle='modal' onclick='inserisci(".$IDRegista.")'><span class='bi bi-plus-square'></span> INSERISCI</button>";
 
-    ?>
-    <table class="table table-info">
-        <thead>
-        <tr>
-            <th class="text-center">ID Film</th>
-            <th class="text-center">Titolo</th>
-            <th class="text-center">Data Uscita</th>
+            ?>
+            <tr>
+                <th scope="col" class="text-center">ID Film</th>
+                <th scope="col" class="text-center">Titolo</th>
+                <th scope="col" class="text-center">Data Uscita</th>
+                <th scope="col" class="text-center">Azioni</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?
 
-            <th scope="col" class="text-center">Elimina</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?
-
-            while($recordset = $risultati->fetch_array(MYSQLI_ASSOC)){
-            echo"<tr>";
-            echo "<td class='text-center'>".$recordset["IDFilm"]."</td>";
-            echo "<td class='text-center'>".$recordset["Titolo"]."</td>";
-            echo "<td class='text-center'>".$recordset["Data-Uscita"]."</td>";
-            echo "<td class='text-center'><button type='button' class='btn btn-danger' data-toggle='modal' onclick='elimina(".$recordset["IDFilm"].")'>elimina</button></td>";
-            echo "<td class='text-center'><button type='button' class='btn btn-primary'onclick='modifica(".$recordset["IDFilm"].")'>Modifica</button></td>";
-            echo"</tr>";
+                while($recordset = $risultati->fetch_array(MYSQLI_ASSOC)){
+                echo"<tr>";
+                echo "<th scope='row' class='text-center'>".$recordset["IDFilm"]."</th>";
+                echo "<td class='text-center'>".$recordset["Titolo"]."</td>";
+                echo "<td class='text-center'>".$recordset["Data-Uscita"]."</td>";
+                echo "<td class='text-center'><button type='button' class='btn btn-danger' data-toggle='modal' onclick='elimina(".$recordset["IDFilm"].")'><span class='bi bi-trash'></span></button> <button type='button' class='btn btn-primary'onclick='modifica(".$recordset["IDFilm"].")'><span class='bi bi-pencil-square'></span></button></td>";
+                //echo "<td class='text-center'><button type='button' class='btn btn-primary'onclick='modifica(".$recordset["IDFilm"].")'>Modifica</button></td>";
+                echo"</tr>";
+                }
+                $risultati->close();
             }
-            $risultati->close();
-        }
-        $connessione->close();
-        ?>
+            $connessione->close();
+            ?>
 
-
-
-        </tbody>
+            </tbody>
         </table>
-    </div>
-    </body>
+        </div>
+</div>
+</body>
 </html>
