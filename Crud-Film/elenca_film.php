@@ -79,6 +79,7 @@ if(!$risultati=$connessione->query($la_query)) {
             </tbody>
         </table>
         </div>
+    <button  style="background-color: purple ; color: white" onclick="location.href='https://github.com/davixlive/Sito/blob/main/Crud-Film/elenca_film.php'"><span class="bi bi-github"></span>Sorgente</button>
 </div>
 </body>
 </html>

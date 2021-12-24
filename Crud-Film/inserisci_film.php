@@ -61,5 +61,6 @@
         <button type="submit" class="btn btn-success">Invia</button>
         </form>
 -->
+<button  style="background-color: purple ; color: white" onclick="location.href='https://github.com/davixlive/Sito/blob/main/Crud-Film/inserisci_film.php'"><span class="bi bi-github"></span>Sorgente</button>
 </body>
 </html>

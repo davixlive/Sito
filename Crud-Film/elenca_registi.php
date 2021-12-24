@@ -56,6 +56,7 @@ if(!$risultati=$connessione->query($la_query)) {
         <div class="container-large">
             <div class="page-header">
                 <p class="display-1" >ELENCO REGISTI</p>
+
             </div>
             <div class="table-responsive">
 
@@ -92,8 +93,9 @@ if(!$risultati=$connessione->query($la_query)) {
 
                 </tbody>
             </table>
-            </div>
 
+            </div>
+            <button  style="background-color: purple ; color: white" onclick="location.href='https://github.com/davixlive/Sito/blob/main/Crud-Film/elenca_registi.php'"><span class="bi bi-github"></span>Sorgente</button>
         </div>
         </body>
 </html>
