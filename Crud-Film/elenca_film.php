@@ -24,7 +24,29 @@
     </script>
 </head>
 <body>
-
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="http://cardillodavide.altervista.org/index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://cardillodavide.altervista.org/ProgettiGO/go.html">Progetti GO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://cardillodavide.altervista.org/Appunti/appunti.html">Appunti</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://cardillodavide.altervista.org/Crud-Film/elenca_registi.php">Registi</a>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/davixlive/Sito/blob/main/Crud-Film/elenca_film.php"><span class="bi bi-github">Sorgente</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+  </nav>
 <?
 include "connessione.php";
 $IDRegista = $_GET['IDRegista'];
@@ -41,7 +63,7 @@ if(!$risultati=$connessione->query($la_query)) {
 ?>
 
 
-<div class="container-large">
+<div class="container-fluid">
     <br><br><br>
     <h1 class="display-1">ELENCO FILM</h1>
     <div class="table-responsive">
@@ -79,7 +101,7 @@ if(!$risultati=$connessione->query($la_query)) {
             </tbody>
         </table>
         </div>
-    <button  style="background-color: purple ; color: white" onclick="location.href='https://github.com/davixlive/Sito/blob/main/Crud-Film/elenca_film.php'"><span class="bi bi-github"></span>Sorgente</button>
+    <!--<button  style="background-color: purple ; color: white" onclick="location.href='https://github.com/davixlive/Sito/blob/main/Crud-Film/elenca_film.php'"><span class="bi bi-github"></span>Sorgente</button>-->
 </div>
 </body>
 </html>

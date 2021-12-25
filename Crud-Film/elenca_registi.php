@@ -19,9 +19,9 @@ if(!$risultati=$connessione->query($la_query)) {
         <head>
             <meta charset="utf-8">
             <title>Visualizza Registi</title>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
         </head>
         <body>
 
@@ -47,7 +47,29 @@ if(!$risultati=$connessione->query($la_query)) {
                 window.location.href = "http://cardillodavide.altervista.org/Crud-Film/modifica_regista.php/?IDRegista="+IDRegista;
             }
         </script>
-
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="http://cardillodavide.altervista.org/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://cardillodavide.altervista.org/ProgettiGO/go.html">Progetti GO</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://cardillodavide.altervista.org/Appunti/appunti.html">Appunti</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="http://cardillodavide.altervista.org/Crud-Film/elenca_registi.php">Registi</a>
+                    </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="https://github.com/davixlive/Sito/blob/main/Crud-Film/elenca_registi.php"><span class="bi bi-github">Sorgente</a>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+        </nav>
         <div class="container-large">
             <div class="page-header">
                 <p class="display-1" >ELENCO REGISTI</p>
@@ -90,7 +112,7 @@ if(!$risultati=$connessione->query($la_query)) {
             </table>
 
             </div>
-            <button  style="background-color: purple ; color: white" onclick="location.href='https://github.com/davixlive/Sito/blob/main/Crud-Film/elenca_registi.php'"><span class="bi bi-github"></span>Sorgente</button>
+            <!--<button  style="background-color: purple ; color: white" onclick="location.href='https://github.com/davixlive/Sito/blob/main/Crud-Film/elenca_registi.php'"><span class="bi bi-github"></span>Sorgente</button>-->
         </div>
         </body>
 </html>
