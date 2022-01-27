@@ -4,7 +4,8 @@ $id = $_GET['id'];
 $la_query="select first_name, last_name, email, phone from users where id = $id ;";
 if(!$risultati=$connessione->query($la_query))
 {
-
+    echo("Errore nell'esecuzione della query: .$la_query. ".$connessione->error.".");
+    exit();
 }
 while($recordset = $risultati->fetch_array(MYSQLI_ASSOC)){
     $first_name = $recordset['first_name'];
