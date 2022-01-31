@@ -14,10 +14,26 @@
 <h1>Prova AJAX</h1>
 
 <form action="">
-    <select name="users" onchange="showUser(this.value)">
-        <option value="">Select a user:</option>
-        <option value="1">Davide Cardillo</option>
-        <option value="2 ">Luca Brugnetti</option>
+    <select name="users" onclick="showNames()" onchange="showUser(this.value)">
+        <option>Seleziona opzione</option>
+        <?
+            include "connessione.php";
+            $la_query="select id,first_name, last_name from users;";
+            if(!$risultati=$connessione->query($la_query))
+            {
+                echo("Errore nell'esecuzione della query: .$la_query. ".$connessione->error.".");
+                exit();
+            }else{
+                if($risultati->num_rows>0){
+                   //echo ' <select name="users" onclick="showNames()" onchange="showUser(this.value)">';
+                   while ($recordset = $risultati->fetch_array(MYSQLI_ASSOC)){
+                       echo "<option value=".$recordset['id'].">".$recordset["first_name"]. " ".$recordset["last_name"]."</option>";
+                   }
+
+                }
+            }
+            $connessione->close();
+        ?>
     </select>
 </form>
 <br>

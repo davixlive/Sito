@@ -13,19 +13,3 @@ if(!$risultati=$connessione->query($la_query))
     }
 }
 $connessione->close();
-
-
-/*
-echo "<table>";
-echo "<tr>";
-echo "<th>Nome</th>";
-echo "<td>" . $first_name . "</td>";
-echo "<th>Cognome</th>";
-echo "<td>" . $last_name . "</td>";
-echo "<th>Email</th>";
-echo "<td>" . $email . "</td>";
-echo "<th>Telefono</th>";
-echo "<td>" . $phone . "</td>";
-echo "</tr>";
-echo "</table>";
-*/
