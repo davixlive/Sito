@@ -6,13 +6,16 @@ if(!$risultati=$connessione->query($la_query))
 {
     echo("Errore nell'esecuzione della query: .$la_query. ".$connessione->error.".");
     exit();
+}else{
+    if($risultati->num_rows>0){
+        header("Content-Type: application/json; charset=UTF-8");
+        echo(json_encode($risultati->fetch_all(MYSQLI_ASSOC)));
+    }
 }
-while($recordset = $risultati->fetch_array(MYSQLI_ASSOC)){
-    $first_name = $recordset['first_name'];
-    $last_name = $recordset['last_name'];
-    $email = $recordset['email'];
-    $phone = $recordset['phone'];
-}
+$connessione->close();
+
+
+/*
 echo "<table>";
 echo "<tr>";
 echo "<th>Nome</th>";
@@ -25,3 +28,4 @@ echo "<th>Telefono</th>";
 echo "<td>" . $phone . "</td>";
 echo "</tr>";
 echo "</table>";
+*/

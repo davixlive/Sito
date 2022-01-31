@@ -33,7 +33,20 @@
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
+                user_info = JSON.parse(this.responseText);
+                format_data = "<table><tr><th>Nome</th>";
+                for(record=0;record<user_info.length;record++){
+                    format_data+="<td>";
+                        format_data+=user_info[record]["first_name"];
+                    format_data+="</td><th>Cognome</th><td>";
+                        format_data+=user_info[record]["last_name"];
+                    format_data+="</td><th>Email</th><td>";
+                        format_data+=user_info[record]["email"];
+                    format_data+="</td><th>Telefono</th><td>";
+                        format_data+=user_info[record]["phone"];
+                    format_data+="</td></tr></table>";
+                }
+                document.getElementById("txtHint").innerHTML = format_data;
             }
         };
         xhttp.open("GET", "http://cardillodavide.altervista.org/Prova-AJAX/get-user.php?id="+str, true);
